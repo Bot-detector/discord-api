@@ -1,19 +1,5 @@
 version: '3'
 services:
-  discord-mysql:
-    build:
-      context: .
-      dockerfile: database/Dockerfile
-    container_name: discord-mysql
-    environment:
-      - MYSQL_ROOT_PASSWORD=root_bot_buster
-    volumes:
-      - ./database/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
-      - ./database/mount:/var/lib/mysql
-    ports:
-      - "127.0.0.1:3306:3306"
-    networks:
-      - botdetector-network
   discord-api:
     build:
       context: .
@@ -32,5 +18,6 @@ services:
       - 3000:3000
     networks:
       - botdetector-network
+
 networks:
   botdetector-network:
