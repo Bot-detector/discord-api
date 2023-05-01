@@ -37,8 +37,8 @@ async def create_discord_verification(
 
 @router.get("/")
 async def read_discord_verification(
-    verification_id: Annotated[int | None, Query()],
-    player_id: Annotated[int | None, Query()],
+    verification_id: int = Query(None, alias="verification_id"),
+    player_id: int = Query(None, alias="player_id"),
     usr: bool = Depends(authenticate_user),
     repo: DiscordVerificationRepository = Depends(get_discord_verification_repository),
 ):
